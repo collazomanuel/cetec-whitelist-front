@@ -53,6 +53,8 @@ class EditUser extends LitElement {
       .catch(error => {
         console.log("error", error);
       })
+
+    window.location.reload();
   }
 
   fetchSearch(){

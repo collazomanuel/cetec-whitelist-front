@@ -1,4 +1,5 @@
 import { LitElement, css, html } from "lit";
+import axios from "axios";
 import '@material/mwc-button'
 import '@material/mwc-textfield';
 import '@material/mwc-formfield'
@@ -10,9 +11,10 @@ class RemoveUser extends LitElement {
 
   static get properties() {
     return {
-             name: String,
-             surname: String,
-             email: String
+      id: String,
+      name: String,
+      surname: String,
+      email: String
     };
   }
 
@@ -30,32 +32,44 @@ class RemoveUser extends LitElement {
          <p></p>
          <mwc-textfield id="email" label="Ingresar email" helper="El email del docente" @change=${(event)=>{this.email=event.target.value}}></mwc-textfield>
          <p></p>
+         <mwc-button slot=primaryAction dialogAction=yes raised @click=${this.fetchSearch}>Buscar</mwc-button>
          <mwc-button slot=primaryAction dialogAction=yes raised @click=${this.fetchCreate}>Eliminar</mwc-button>
     </div>`;
   }
 
   fetchCreate(){
-     var myHeaders = new Headers();
-     myHeaders.append("Authorization", "Bearer 0a85f0126790d4f1f65a226bce0141381878ad14f9e14df033ba84b61fadc575");
-     myHeaders.append("Content-Type", "application/json");
-     var raw = JSON.stringify({ 
-                                name:this.name, 
-                                surname:this.surname, 
-                                email:this.email
-                             });
-    var requestOptions = {
-                          method: 'DELETE',
-                          headers: myHeaders,
-                          body: raw,
-                          redirect: 'follow'
-                         };
-    fetch("https://gorest.co.in/public/v2/users", requestOptions)
-    .then(response => response.text())
-    .then(result => console.log(result))
-    .catch(error => console.log('error', error));
+    axios
+      .delete("http://localhost:8080/" + "user/" + this.id)
+      .then(returnedNLU => {
+        console.log("Usuario eliminado exitosamente.");
+        //dispatch(nluActions.data({id: '', name: '', text: ''}));
+      })
+      .catch(error => {
+        console.log("error", error);
+      })
 
-     window.location.reload();
-    } 
+    window.location.reload();
+  }
+  
+  fetchSearch(){
+    axios
+      .get("http://localhost:8080/" + "user?email="+ this.email)
+      .then(response => {
+        if(!response.data) {
+          console.log("Usuario no encontrado.");
+          //dispatch(nluActions.data({id: '', name: '', text: ''}));
+        
+        } else {
+          this.id = response.data._id;
+          this.name = response.data.name;
+          this.surname = response.data.surname;
+          this.email = response.data.email;
+        }
+      })
+      .catch(error => {
+        console.log("error", error);
+      })
+  }
 }
 
 customElements.define("remove-user-page", RemoveUser);
