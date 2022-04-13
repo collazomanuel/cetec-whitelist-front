@@ -54,25 +54,6 @@ class RemoveUser extends LitElement {
 
     window.location.reload();
   }
-  
-  fetchSearch(){
-    axios
-      .get("http://localhost:8080/" + "user?email="+ this.email)
-      .then(response => {
-        if(!response.data) {
-          console.log("Usuario no encontrado.");
-        } else {
-          this.id = response.data._id;
-          this.name = response.data.name;
-          this.surname = response.data.surname;
-          this.email = response.data.email;
-          this.found = true;
-        }
-      })
-      .catch(error => {
-        console.log("error", error);
-      })
-  }
 }
 
 customElements.define("remove-user-page", RemoveUser);

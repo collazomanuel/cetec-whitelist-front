@@ -8,9 +8,9 @@ import "@material/mwc-list/mwc-list-item.js";
 import "./components/navigation/nav-link.component";
 import "./components/header/header.component";
 import "./router-outlet";
+import "./components/navigation/nav-bar.component";
 
 //pages
-import "./pages/home/home.page";
 import "./pages/whitelist/whitelist.page";
 import "./pages/addUser/add-user.page";
 import "./pages/editUser/edit-user.page";
@@ -76,25 +76,7 @@ class App extends router(LitElement) {
   render() {
     return html`
       <app-header></app-header>
-      <div class="nav-container">
-        <mwc-list activatable>
-          <nav-link href="/">
-            <mwc-list-item> Home </mwc-list-item>
-          </nav-link>
-          <nav-link href="/whitelist">
-            <mwc-list-item> Whitelist </mwc-list-item>
-          </nav-link>
-          <nav-link href="/add-user">
-            <mwc-list-item> Add user </mwc-list-item>
-          </nav-link>
-          <nav-link href="/edit-user">
-            <mwc-list-item> Edit user </mwc-list-item>
-          </nav-link>
-          <nav-link href="/remove-user">
-            <mwc-list-item> Remove user </mwc-list-item>
-          </nav-link>
-        </mwc-list>
-      </div>
+      <nav-bar></nav-bar>
 
       <router-outlet active-route=${this.route}>
         <home-page route="home"></home-page>

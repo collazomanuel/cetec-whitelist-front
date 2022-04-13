@@ -51,7 +51,8 @@ class AddUser extends LitElement {
         console.log('error', error);
         window.location.reload();
       })
-    } 
+    window.location.reload();
+  } 
 }
 
 customElements.define("add-user-page", AddUser);
