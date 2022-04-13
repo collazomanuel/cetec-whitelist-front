@@ -1,4 +1,5 @@
 import { LitElement, css, html } from "lit";
+import axios from "axios";
 import '@material/mwc-button'
 import '@material/mwc-textfield';
 import '@material/mwc-formfield'
@@ -10,9 +11,9 @@ class AddUser extends LitElement {
 
   static get properties() {
     return {
-             name: String,
-             surname: String,
-             email: String
+      name: String,
+      surname: String,
+      email: String
     };
   }
 
@@ -35,26 +36,21 @@ class AddUser extends LitElement {
   }
 
   fetchCreate(){
-     var myHeaders = new Headers();
-     myHeaders.append("Authorization", "Bearer 0a85f0126790d4f1f65a226bce0141381878ad14f9e14df033ba84b61fadc575");
-     myHeaders.append("Content-Type", "application/json");
-     var raw = JSON.stringify({ 
-                                name:this.name, 
-                                surname:this.surname, 
-                                email:this.email
-                             });
-    var requestOptions = {
-                          method: 'POST',
-                          headers: myHeaders,
-                          body: raw,
-                          redirect: 'follow'
-                         };
-    fetch("https://localhost:8080/" + "user", requestOptions)
-    .then(response => response.text())
-    .then(result => console.log(result))
-    .catch(error => console.log('error', error));
+    var newUser = { 
+      name:this.name, 
+      surname:this.surname, 
+      email:this.email
+    };
 
-     window.location.reload();
+    axios
+      .post("http://localhost:8080/" + "user", null, { params: newUser })
+      .then(returnedUser => {
+        console.log(returnedUser.data);
+      })
+      .catch(error => {
+        console.log('error', error);
+        window.location.reload();
+      })
     } 
 }
 
