@@ -1,4 +1,4 @@
-import { LitElement, html } from "lit-element";
+import { LitElement, html } from "lit";
 import { NavBarStyles }  from './nav-bar.styles';
 import '@material/mwc-tab-bar';
 import "./nav-link.component";
