@@ -11,14 +11,14 @@ export const WhitelistStyles = css`
   font-weight: 300;
   line-height: 1.42em;
   color:#A7A1AE;
-  background-color:#1F2739;
+  background-color:#031926;
   }
   h1 {
   font-size:3em; 
   font-weight: 300;
   line-height:1em;
   text-align: center;
-  color: #4DC3FA;
+  color: #2f3e46;
   }
   h2 {
   font-size:1em; 
@@ -35,13 +35,13 @@ export const WhitelistStyles = css`
   color: #FB667A;
   text-decoration: none;
   }
-  .blue { color: #185875; }
+  .blue { color: #2f3e46; }
   .yellow { color: #FFF842; }
   .container th h1 {
   font-weight: bold;
   font-size: 1em;
   text-align: left;
-  color: #185875;
+  color: #2f3e46;
   }
   .container td {
   font-weight: normal;
@@ -65,29 +65,31 @@ export const WhitelistStyles = css`
   }
   /* Background-color of the odd rows */
   .container tr:nth-child(odd) {
-  background-color: #323C50;
+  background-color: #f9e7e7;
   }
   /* Background-color of the even rows */
   .container tr:nth-child(even) {
-  background-color: #2C3446;
+  background-color: #DED6D6;
   }
 
   .container th {
-  background-color: #1F2739;
+  background-color: #ada0a6;
   }
-  .container td:first-child { color: #FB667A; }
+  .container td:first-child {
+    color: #000000;
+  }
   .container tr:hover {
-  background-color: #464A52;
+  background-color: #d2cbcb;
   -webkit-box-shadow: 0 6px 6px -6px #0E1119;
   -moz-box-shadow: 0 6px 6px -6px #0E1119;
   box-shadow: 0 6px 6px -6px #0E1119;
   }
   .container td:hover {
-  background-color: #FFF842;
-  color: #403E10;
+  background-color: #7d938a;
+  color: #d2cbcb;
   font-weight: bold;
 
-  box-shadow: #7F7C21 -1px 1px, #7F7C21 -2px 2px, #7F7C21 -3px 3px, #7F7C21 -4px 4px, #7F7C21 -5px 5px, #7F7C21 -6px 6px;
+  box-shadow: #d2cbcb -1px 1px, #d2cbcb -2px 2px, #d2cbcb -3px 3px, #d2cbcb -4px 4px, #d2cbcb -5px 5px, #7F7C21 -6px 6px;
   transform: translate3d(6px, -6px, 0);
 
   transition-delay: 0s;

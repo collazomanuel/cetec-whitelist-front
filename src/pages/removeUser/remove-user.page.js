@@ -3,10 +3,11 @@ import axios from "axios";
 import '@material/mwc-button'
 import '@material/mwc-textfield';
 import '@material/mwc-formfield'
+import { RemoveUserStyles }  from './remove-user.styles'
 
 class RemoveUser extends LitElement {
   static get styles() {
-    return [css``];
+    return RemoveUserStyles;
   }
 
   static get properties() {
@@ -29,7 +30,7 @@ class RemoveUser extends LitElement {
 
   render() {
     return html` 
-    <div>
+    <div class="remove-user-nav">
       <h1>Remover Usuario</h1>
         <mwc-textfield id="email" label="Ingresar email" helper="El email del docente" .value="${this.email}" @change=${(event)=>{this.email=event.target.value}}></mwc-textfield>
         <p></p>

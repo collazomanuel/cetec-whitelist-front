@@ -3,10 +3,11 @@ import axios from "axios";
 import '@material/mwc-button'
 import '@material/mwc-textfield';
 import '@material/mwc-formfield'
+import { AddUserStyles }  from './add-user.styles'
 
 class AddUser extends LitElement {
   static get styles() {
-    return [css``];
+    return AddUserStyles;
   }
 
   static get properties() {
@@ -23,7 +24,7 @@ class AddUser extends LitElement {
 
   render() {
     return html` 
-    <div>
+    <div class="add-user-nav">
       <h1>Agregar Usuario</h1>
          <mwc-textfield id="name" label="Ingresar nombre" helper="El nombre del docente" @change=${(event)=>{this.name=event.target.value}}></mwc-textfield>
          <p></p>
@@ -49,8 +50,8 @@ class AddUser extends LitElement {
       })
       .catch(error => {
         console.log('error', error);
-        window.location.reload();
       })
+
     window.location.reload();
   } 
 }

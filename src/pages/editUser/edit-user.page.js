@@ -3,10 +3,11 @@ import axios from "axios";
 import '@material/mwc-button';
 import '@material/mwc-textfield';
 import '@material/mwc-formfield';
+import { EditUserStyles }  from './edit-user.styles'
 
 class EditUser extends LitElement {
   static get styles() {
-    return [css``];
+    return EditUserStyles;
   }
 
   static get properties() {
@@ -29,7 +30,7 @@ class EditUser extends LitElement {
 
   render() {
     return html` 
-    <div>
+    <div class="edit-user-nav">
       <h1>Editar Usuario</h1>
         <mwc-textfield id="email" label="Ingresar email" helper="El email del docente" .value="${this.email}" @change=${(event)=>{this.email=event.target.value}}></mwc-textfield>
         <p></p>
