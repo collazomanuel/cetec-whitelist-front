@@ -14,7 +14,8 @@ class EditUser extends LitElement {
       id: String,
       name: String,
       surname: String,
-      email: String
+      email: String,
+      found: Boolean
     };
   }
 
@@ -23,20 +24,21 @@ class EditUser extends LitElement {
     this.name = "";
     this.surname = "";
     this.email = "";
+    this.found = false;
   }
 
   render() {
     return html` 
     <div>
       <h1>Editar Usuario</h1>
-        <mwc-textfield id="name" label="Ingresar nombre" helper="El nombre del docente" .value="${this.name}" @change=${(event)=>{this.name=event.target.value}}></mwc-textfield>
-        <p></p>
-        <mwc-textfield id="surname" label="Ingresar apellido" helper="El apellido del docente" .value="${this.surname}" @change=${(event)=>{this.surname=event.target.value}}></mwc-textfield>
-        <p></p>
         <mwc-textfield id="email" label="Ingresar email" helper="El email del docente" .value="${this.email}" @change=${(event)=>{this.email=event.target.value}}></mwc-textfield>
         <p></p>
-        <mwc-button slot=primaryAction dialogAction=yes raised @click=${this.fetchSearch}>Buscar</mwc-button>
-        <mwc-button slot=primaryAction dialogAction=yes raised @click=${this.fetchCreate}>Editar</mwc-button>
+        <mwc-textfield id="name" label="Ingresar nombre" helper="El nombre del docente" .value="${this.name}" .disabled=${!this.found} @change=${(event)=>{this.name=event.target.value}}></mwc-textfield>
+        <p></p>
+        <mwc-textfield id="surname" label="Ingresar apellido" helper="El apellido del docente" .value="${this.surname}" .disabled=${!this.found} @change=${(event)=>{this.surname=event.target.value}}></mwc-textfield>
+        <p></p>
+        <mwc-button slot=primaryAction dialogAction=yes raised .disabled=${this.found} @click=${this.fetchSearch}>Buscar</mwc-button>
+        <mwc-button slot=primaryAction dialogAction=yes raised .disabled=${!this.found} @click=${this.fetchCreate}>Editar</mwc-button>
     </div>`;
   }
 
@@ -64,6 +66,7 @@ class EditUser extends LitElement {
           this.name = response.data.name;
           this.surname = response.data.surname;
           this.email = response.data.email;
+          this.found = true;
         }
       })
       .catch(error => {
