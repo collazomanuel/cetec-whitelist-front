@@ -3,6 +3,7 @@ import axios from "axios";
 import '@material/mwc-button';
 import '@material/mwc-textfield';
 import '@material/mwc-formfield';
+import '@material/mwc-dialog'
 import { EditUserStyles }  from './edit-user.styles'
 
 class EditUser extends LitElement {
@@ -16,7 +17,9 @@ class EditUser extends LitElement {
       name: String,
       surname: String,
       email: String,
-      found: Boolean
+      found: Boolean,
+      created: Boolean,
+      error: String
     };
   }
 
@@ -26,6 +29,8 @@ class EditUser extends LitElement {
     this.surname = "";
     this.email = "";
     this.found = false;
+    this.created = false;
+    this.error = "";
   }
 
   render() {
@@ -40,6 +45,16 @@ class EditUser extends LitElement {
         <p></p>
         <mwc-button slot=primaryAction dialogAction=yes raised .disabled=${this.found} @click=${this.fetchSearch}>Buscar</mwc-button>
         <mwc-button slot=primaryAction dialogAction=yes raised .disabled=${!this.found} @click=${this.fetchCreate}>Editar</mwc-button>
+        
+        <mwc-dialog id="dialog1" heading="Exito!" .open=${this.created}>
+          Usuario editado con éxito
+          <mwc-button slot="primaryAction" dialogAction="ok" @click=${this.reload}>OK</mwc-button>
+        </mwc-dialog>
+
+        <mwc-dialog id="dialog1" heading="Error" .open=${this.error}>
+          ${this.error}
+          <mwc-button slot="primaryAction" dialogAction="ok">OK</mwc-button>
+        </mwc-dialog>
     </div>`;
   }
 
@@ -48,12 +63,13 @@ class EditUser extends LitElement {
       .put("http://localhost:8080/" + "user" + "/" + this.id + "/" + "?name=" + this.name + "&surname=" + this.surname + "&email=" + this.email, null)
       .then(returnedUser => {
         console.log("Usuario editado sin problemas.");
+        this.created = true;
       })
       .catch(error => {
         console.log("error", error);
+        this.error = error.response.data.name;
+        this.found = false;
       })
-
-    window.location.reload();
   }
 
   fetchSearch(){
@@ -72,7 +88,12 @@ class EditUser extends LitElement {
       })
       .catch(error => {
         console.log("error", error);
+        this.error = error.response.data.name;
       })
+  }
+
+  reload(){
+    window.location.reload();
   }
 }
 

@@ -17,6 +17,7 @@
     "@emotion/react": "latest",
     "@emotion/styled": "latest",
     "@material/mwc-button": "^0.25.3",
+    "@material/mwc-dialog": "^0.25.3",
     "@material/mwc-formfield": "^0.25.3",
     "@material/mwc-list": "^0.25.3",
     "@material/mwc-tab-bar": "^0.25.3",
@@ -26,8 +27,7 @@
     "axios": "^0.26.1",
     "dotenv": "^16.0.0",
     "lit": "^2.0.2",
-    "lit-element-router": "^2.0.3",
-    "lit-router": "^0.2.2"
+    "lit-element-router": "^2.0.3"
   },
   "devDependencies": {
     "vite": "^2.9.0"
