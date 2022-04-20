@@ -61,7 +61,7 @@ export const WhitelistStyles = css`
   .container td, .container th {
   padding-bottom: 2%;
   padding-top: 2%;
-  padding-left:2%;  
+  padding-left: 2%;
   }
   /* Background-color of the odd rows */
   .container tr:nth-child(odd) {
@@ -80,17 +80,22 @@ export const WhitelistStyles = css`
   }
   .container tr:hover {
   background-color: #d2cbcb;
+
   -webkit-box-shadow: 0 6px 6px -6px #0E1119;
   -moz-box-shadow: 0 6px 6px -6px #0E1119;
-  box-shadow: 0 6px 6px -6px #0E1119;
+   box-shadow: 0 6px 6px -6px #0E1119;
+  
   }
   .container td:hover {
   background-color: #7d938a;
   color: #d2cbcb;
-  font-weight: bold;
+  font-weight: normal;
+
 
   box-shadow: #d2cbcb -1px 1px, #d2cbcb -2px 2px, #d2cbcb -3px 3px, #d2cbcb -4px 4px, #d2cbcb -5px 5px, #7F7C21 -6px 6px;
+  
   transform: translate3d(6px, -6px, 0);
+
 
   transition-delay: 0s;
   transition-duration: 0.4s;
