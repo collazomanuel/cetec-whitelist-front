@@ -73,7 +73,7 @@ class RemoveUser extends connect(store)(LitElement) {
 
   fetchCreate(){
     axios
-      .delete("http://localhost:8080/" + "user/" + this.id)
+      .delete(process.env.URL + "user/" + this.id)
       .then(returnedUser => {
         store.dispatch(stateActions.data({state: 'Success', msg: 'Usuario eliminado con éxito'}));
       })

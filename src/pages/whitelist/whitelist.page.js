@@ -25,7 +25,7 @@ connectedCallback() {
    
 fetchData() {
   axios
-  .get("http://localhost:8080/" + "whitelist")
+  .get(process.env.URL + "whitelist")
   .then(response => response.data)
   .then(data =>{
     this.data = data

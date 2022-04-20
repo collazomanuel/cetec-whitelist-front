@@ -38,7 +38,7 @@ class SearchButton extends connect(store)(LitElement) {
 
   fetchSearch(){
     axios
-      .get("http://localhost:8080/" + "user?email="+ this.email)
+      .get(process.env.URL + "user?email="+ this.email)
       .then(response => {
         if(!response.data) {
           store.dispatch(stateActions.data({state: 'Error', msg: 'Usuario no encontrado.'}))

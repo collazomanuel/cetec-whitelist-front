@@ -73,7 +73,7 @@ class EditUser extends connect(store)(LitElement) {
 
   fetchCreate(){
     axios
-      .put("http://localhost:8080/" + "user" + "/" + this.id + "/" + "?name=" + this.name + "&surname=" + this.surname + "&email=" + this.email, null)
+      .put(process.env.URL + "user" + "/" + this.id + "/" + "?name=" + this.name + "&surname=" + this.surname + "&email=" + this.email, null)
       .then(returnedUser => {
         store.dispatch(stateActions.data({state: 'Success', msg: 'Usuario editado con éxito'}))
       })
