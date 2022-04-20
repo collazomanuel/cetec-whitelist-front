@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + Lit App</title>
     <script type="module" src="/src/App.js"></script>
+    <script>
+      window.process = { env: { NODE_ENV: 'production' } };
+    </script>
   </head>
   <body>
     <app-container>
