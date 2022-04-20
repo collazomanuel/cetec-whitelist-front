@@ -52,9 +52,9 @@ class EditUser extends connect(store)(LitElement) {
       <h1>Editar Usuario</h1>
         <mwc-textfield id="email" label="Ingresar email" helper="El email del docente" .value="${this.email}" @change=${(event)=>{store.dispatch(userActions.email(event.target.value))}}></mwc-textfield>
         <p></p>
-        <mwc-textfield id="name" label="Ingresar nombre" helper="El nombre del docente" .value="${this.name}" .disabled=${this.id === ''} @change=${(event)=>{store.dispatch(userActions.name(event.target.value))}}></mwc-textfield>
+        <mwc-textfield id="name" label="Nombre" helper="El nombre del docente" .value="${this.name}" .disabled=${this.id === ''} @change=${(event)=>{store.dispatch(userActions.name(event.target.value))}}></mwc-textfield>
         <p></p>
-        <mwc-textfield id="surname" label="Ingresar apellido" helper="El apellido del docente" .value="${this.surname}" .disabled=${this.id === ''} @change=${(event)=>{store.dispatch(userActions.surname(event.target.value))}}></mwc-textfield>
+        <mwc-textfield id="surname" label="Apellido" helper="El apellido del docente" .value="${this.surname}" .disabled=${this.id === ''} @change=${(event)=>{store.dispatch(userActions.surname(event.target.value))}}></mwc-textfield>
         <p></p>
         <search-button-component></search-button-component>
         <mwc-button slot=primaryAction dialogAction=yes raised .disabled=${this.id === ''} @click=${this.fetchCreate}>Editar</mwc-button>

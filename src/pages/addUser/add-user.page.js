@@ -79,7 +79,7 @@ class AddUser extends connect(store)(LitElement) {
     axios
       .post("http://localhost:8080/" + "user", null, { params: newUser })
       .then(returnedUser => {
-        store.dispatch(stateActions.data({state: 'Success', msg: 'Usuario creado con éxito'}))
+        store.dispatch(stateActions.data({state: 'Success', msg: 'Usuario creado con éxito'}));
       })
       .catch(error => {
         store.dispatch(stateActions.data({state: 'Error', msg: error.response.data.name}))
